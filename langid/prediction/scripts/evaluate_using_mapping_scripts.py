@@ -13,31 +13,21 @@ import datetime
 import sys
 from pathlib import Path
 import json
-import time
 import importlib
 import os
 
-from datasets import Dataset, Audio
-import transformers
-from transformers import AutoModel, Trainer, AutoModelForAudioClassification, TrainingArguments, AutoFeatureExtractor
-import evaluate
-from torch.utils.data import DataLoader
+from datasets import Audio
+from transformers import AutoModelForAudioClassification, AutoFeatureExtractor
 import torch
-from tqdm.auto import trange, tqdm
-import numpy as np
-import matplotlib.pyplot as plt
-import iso639
 
-import global_id_utils
-import eval_report
 
 def main(**kwargs):
   """
-  reads in variables and calls each piece of the process
+  Run LI on a given file
   """
 
   model_id = kwargs.get("model_id")
-  data_path = kwargs.get("data_path") ## should I give it a default value of where we load our data form??
+  filepath = kwargs.get("filepath")
 
   ## Build output path
   iso_now = datetime.now().isoformat().replace(':', '-').replace('.', '-')
@@ -45,20 +35,19 @@ def main(**kwargs):
   output_dir.mkdir(parents=True, exist_ok=True)
   mappings_dir = Path("/app/mappings")
   mappings_dir.mkdir(parents=True, exist_ok=True)
+
   ## STEPS:
   # Load model 
   model, feature_extractor = load_model(model_id)
   # Load data
-  local_dataset = load_local_data(data_path)
+  audio_array = load_local_data(filepath)
   ## Get model mappings
   ## I am not entirely sure that we need the mapping in this case, but maybe this is to make it more universal 
   model_id_to_global_id, global_id_to_model_id = load_mappings(mappings_dir, model_id)
-  model_ready_dataset = preprocess_data(feature_extractor, local_dataset, model_id, model, global_id_to_model_id)
   ## Run predictions
-  predictions = predict(model, model_ready_dataset, model_id_to_global_id)
+  predict(model, audio_array, feature_extractor, model_id_to_global_id)
   ##TODO: Add a function to output the predictions
 
-"""# Load model"""
 def load_model(model_id):
   """
   Loads the model amd feature extractor according to model_id
@@ -67,32 +56,17 @@ def load_model(model_id):
   feature_extractor = AutoFeatureExtractor.from_pretrained(model_id)
   return model, feature_extractor
 
-"""# Load data"""
-def load_local_data(local_data):
+def load_local_data(filepath):
   """
   loads local data into a dataset using HuggingFace Audio to extract audio from the files
   """
-  ## Currently, I built this just to support wave, but we could modify to support other media types
-  audio_files = [os.path.join(local_data, f) 
-                  for f in os.listdir(local_data) 
-                  if f.endswith(".wav")]
-  ## Create dataset of local data:
-  local_dataset = Dataset.from_dict({
-    "filepath": audio_files,
-    "audio": audio_files
-  })
-  ## Cast to HF Audio
-  local_dataset = local_dataset.cast_column("audio", Audio(sampling_rate=16000)) ##TODO: could expose more kwargs here to make it more customizable 
+  return Audio(sampling_rate=16000).decode_example(filepath)
 
-  return local_dataset
-
-"""## Load mappings"""
 def load_mappings(mappings_dir, model_id):
   """
   Loads the mappings for the models 
   """
   model_mappings_dir = mappings_dir / "models" / model_id
-  # dataset_mappings_dir = mappings_dir / "datasets" / dataset_id ## I don't think that we need this anymore
 
   def load_mapping(path: Path):
     with open(path, "r") as in_file:
@@ -105,55 +79,20 @@ def load_mappings(mappings_dir, model_id):
   global_id_to_model_id = load_mapping(model_mappings_dir / "global_id_to_model_id.json")
 
   return model_id_to_global_id, global_id_to_model_id
-  ## Can ignore these for now, they are for mapping the HF integers and strings and the making the language labels compatible with the model
-  # dataset_id_to_global_id = load_mapping(dataset_mappings_dir / "dataset_id_to_global_id.json")
-  # global_id_to_dataset_id = load_mapping(dataset_mappings_dir / "global_id_to_dataset_id.json"
 
-
-## Might be able to delete this too
-def import_file(module_name, file_path):
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-
-    return module
-"""# Preprocess data"""
-import importlib
-import importlib.util
-def preprocess_data(feature_extractor, local_dataset, model_id, model, global_id_to_model_id):
+def predict(model, audio_array, feature_extractor, model_id_to_global_id):
   """
-  preprocess dataset to be compatible with model
+  Prediction on an audio_array of a single file using specified model
   """
-  def import_file(module_name, file_path):
-    ## Loads the model from the spec saved
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-  
-  ## TODO: redefine how this is happening
-  model_preprocess_dataset = import_file("preprocess_dataset", "/app/mapping_scripts/models/" + model_id + "/preprocess_dataset.py")
-
-  return model_preprocess_dataset.to_model_dataset(local_dataset, model, feature_extractor, global_id_to_model_id)
-
-def predict(model, dataset, model_id_to_global_id, batch_size=1):
-  """
-  predicition if we are just passing in a list of audio arrays
-  TODO: remove if we aren't using
-  """
-  ## Allows us to process in batches by modifying batch_size
-  dataloader = DataLoader(dataset.with_format("torch"), batch_size=batch_size)
-
-  predictions = []
+  inputs = feature_extractor(audio_array, sampling_rate=16000, return_tensors="pt")
   with torch.no_grad():
-    for batch in dataloader:
-      outputs = model(**batch)
-      # get id with highest predicted score
-      predicted_ids = outputs.logits.argmax(dim=-1).tolist()
-      ## change to readable language labels
-      predictions.extend([model_id_to_global_id[i] for i in predicted_ids])
-  print(f'predicted_langs: {predictions}')
-  return predictions
+    outputs = model(**inputs)
+    # get id with highest predicted score
+    predicted_id = outputs.logits.argmax(dim=-1).tolist()
+    ## change to readable language labels
+    prediction = model_id_to_global_id[predicted_id]
+  print(f'predicted_langs: {prediction}')
+  return prediction
 
 # """# Make inferences"""
 # def make_inferences(output_dir, model, model_dataset, compute_metrics):
