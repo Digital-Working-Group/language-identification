@@ -1,0 +1,42 @@
+[
+    {
+        "lang": "English",
+        "confidence": 0.9994128942489624
+    },
+    {
+        "lang": "Welsh",
+        "confidence": 1.6988031347864307e-05
+    },
+    {
+        "lang": "Slovenian",
+        "confidence": 1.3651256267621648e-05
+    },
+    {
+        "lang": "Tatar",
+        "confidence": 1.1638738214969635e-05
+    },
+    {
+        "lang": "Mandarin Chinese",
+        "confidence": 8.861955393513199e-06
+    },
+    {
+        "lang": "Albanian",
+        "confidence": 8.218637049139943e-06
+    },
+    {
+        "lang": "Scots",
+        "confidence": 6.185562142491108e-06
+    },
+    {
+        "lang": "Portuguese",
+        "confidence": 5.998941560392268e-06
+    },
+    {
+        "lang": "Kazakh",
+        "confidence": 5.5241971494979225e-06
+    },
+    {
+        "lang": "Yocobou\u00e9 Dida",
+        "confidence": 4.745277237816481e-06
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "lang": "Spanish",
+        "confidence": 0.8958168625831604
+    },
+    {
+        "lang": "Occitan (post 1500)",
+        "confidence": 0.0780135840177536
+    },
+    {
+        "lang": "French",
+        "confidence": 0.0015053701354190707
+    },
+    {
+        "lang": "Galician",
+        "confidence": 0.0011001776438206434
+    },
+    {
+        "lang": "Guarani",
+        "confidence": 0.0008392850286327302
+    },
+    {
+        "lang": "Asturian",
+        "confidence": 0.0006084989872761071
+    },
+    {
+        "lang": "Catalan",
+        "confidence": 0.0005703054484911263
+    },
+    {
+        "lang": "Esperanto",
+        "confidence": 0.0004831361584365368
+    },
+    {
+        "lang": "Latin",
+        "confidence": 0.00045569383655674756
+    },
+    {
+        "lang": "Papiamento",
+        "confidence": 0.00043414384708739817
+    }
+]
