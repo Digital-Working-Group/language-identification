@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 
 from transformers import AutoModelForAudioClassification, AutoFeatureExtractor
 
@@ -10,7 +9,7 @@ if __name__ == "__main__" and __package__ is None:
   # global_id_utils
   sys.path.append("/app")
   # mapping script utils
-  sys.path.append("/app/mapping_scripts")
+  sys.path.append("/app/scripts/mapping_scripts")
 
 import global_id_utils
 import utils
@@ -43,6 +42,7 @@ def create_mappings():
   return model_id_to_global_id, global_id_to_model_id
 
 if __name__ == "__main__":
-  output_folder_path = Path(__file__).resolve().parents[4] / "mappings" / "models" / model_id
+  mappings_dir = Path(f"/app/mappings/models/{model_id}")
+  mappings_dir.mkdir(parents=True, exist_ok=True)
   model_ids_to_global_ids, global_ids_to_model_ids = create_mappings()
-  utils.save_mappings(output_folder_path, model_ids_to_global_ids, global_ids_to_model_ids)
+  utils.save_mappings(mappings_dir, model_ids_to_global_ids, global_ids_to_model_ids)

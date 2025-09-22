@@ -10,8 +10,9 @@ def to_model_dataset(dataset, model, feature_extractor, global_id_to_model_id):
     new_sample = feature_extractor(sample["audio"]["array"], sampling_rate=sample["audio"]["sampling_rate"], return_tensors="pt")
     for input_feature in feature_extractor.model_input_names:
       new_sample[input_feature] = torch.squeeze(new_sample[input_feature])
-    global_id = sample["lang_id"]
-    new_sample["label"] = global_id_to_model_id[global_id]
+    if "lang_id" in new_sample.keys():
+      global_id = sample["lang_id"]
+      new_sample["label"] = global_id_to_model_id[global_id]
     return new_sample
 
   return (dataset
