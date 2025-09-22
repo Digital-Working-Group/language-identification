@@ -47,6 +47,8 @@ Please see Docker's documentation for more information ([docker build](https://d
 See [scripts/main.py](src/main.py) for usage examples.
 
 ```python
+from langid_predict import run_prediction
+
 def main():
     """
     Runs lang id example
@@ -54,10 +56,12 @@ def main():
     kwargs_whisper = {'model_id': 'sanchit-gandhi/whisper-medium-fleurs-lang-id'}
     run_prediction('../sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_whisper)
     run_prediction('../sample_files/100yearsofsolitude_span.wav', **kwargs_whisper)
+    run_prediction('../sample_files/mandarin_short.wav', **kwargs_whisper)
 
     kwargs_fb = {'model_id': 'facebook/mms-lid-4017'}
     run_prediction('../sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_fb)
     run_prediction('../sample_files/100yearsofsolitude_span.wav', **kwargs_fb)
+    run_prediction('../sample_files/mandarin_short.wav', **kwargs_fb)
 
 if __name__ == '__main__':
     main()
@@ -73,6 +77,7 @@ See [Models](#models) for a list of suggested and compatible models.
 | Keyword Argument | Type | Description | Default Value |
 |---|---|---|---|
 | output_fname | str | The desired base filename of the output files. | Basename of input_fp. |
+| num_predictions | int | The number of most likely language predictions and probabilities to output. | 10 |
 | output_dir | str | The desired root folder to place output files. | "output/" in the base directory of input_fp. |
 | model_id | str | The id of the desired model. | None |
 
@@ -82,21 +87,28 @@ See [Models](#models) for a list of suggested and compatible models.
 sample_files
 │   100yearsofsolitude_span.wav
 │   first_minute_Sample_HV_Clip.wav
+│   mandarin_short.wav
 │
 └───output
     ├───facebook_mms-lid-4017
     │   ├───2025-09-22T16-34-08-252927
     │   │       first_minute_Sample_HV_Clip.json
     │   │
-    │   └───2025-09-22T16-34-24-066659
-    │           100yearsofsolitude_span.json
+    │   ├───2025-09-22T16-34-24-066659
+    │   │       100yearsofsolitude_span.json
+    │   │
+    │   └───2025-09-22T17-32-53-281138
+    │           mandarin_short.json
     │
     └───sanchit-gandhi_whisper-medium-fleurs-lang-id
         ├───2025-09-22T16-34-00-362607
         │       first_minute_Sample_HV_Clip.json
         │
-        └───2025-09-22T16-34-05-823805
-                100yearsofsolitude_span.json
+        ├───2025-09-22T16-34-05-823805
+        │       100yearsofsolitude_span.json
+        │
+        └───2025-09-22T17-32-48-375608
+                mandarin_short.json
 ```
 
 ## Models

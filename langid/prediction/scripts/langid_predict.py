@@ -21,6 +21,7 @@ def run_prediction(filepath, **kwargs):
   input_fp_path = Path(filepath)
 
   model_id = kwargs.get("model_id")
+  num_predictions = kwargs.get("num_predictions", 10)
   output_fname = kwargs.get('output_fname', Path(input_fp_path.name).stem)
   output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
 
@@ -42,7 +43,7 @@ def run_prediction(filepath, **kwargs):
   model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
   ## Run predictions
   print("PREDICTING LANGUAGE")
-  prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id)
+  prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id, num_predictions)
   ## Write output:
   write_lang_id_json(prediction, output_dir /output_fname)
 
@@ -86,7 +87,7 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_pr
   with torch.no_grad():
     outputs = model(**inputs)
     probabilities = F.softmax(outputs.logits, dim=-1)
-    print(probabilities)
+
     # get ids with highest predicted score (number defined by num_predictions)
     top_probabilities, top_lang_ids = torch.topk(probabilities, k=num_predictions, dim=-1)
     top_probabilities = top_probabilities.tolist()[0]
