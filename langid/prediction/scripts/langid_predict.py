@@ -38,7 +38,6 @@ def run_prediction(filepath, **kwargs):
   # Load data
   audio_array = load_local_data(filepath)
   ## Get model mappings
-  ## I am not entirely sure that we need the mapping in this case, but maybe this is to make it more universal 
   print("LOADING MAPPING")
   model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
   ## Run predictions
@@ -79,7 +78,7 @@ def load_mappings(mappings_dir, model_id):
 
   return model_id_to_global_id, global_id_to_model_id
 
-def predict(model, audio_array, feature_extractor, model_id_to_global_id):
+def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_predictions=10):
   """
   Prediction on an audio_array of a single file using specified model
   """
@@ -87,21 +86,23 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id):
   with torch.no_grad():
     outputs = model(**inputs)
     probabilities = F.softmax(outputs.logits, dim=-1)
-    # get id with highest predicted score
-    predicted_id = probabilities.argmax(dim=-1).item()
-    lang_obj = global_id_to_lang(model_id_to_global_id[predicted_id])
-    print(f"Predicted id: {predicted_id}")
-    # get the cofidence score
-    confidence = probabilities.max(dim=-1).values.item()
-    ## change to readable language labels
-    prediction = {
-      "lang": lang_obj.name,
-      "confidence": confidence
-      }
-    print(f'Predicted Lang: {prediction}')
-    print(f'lang_obj: {lang_obj}')
-    print(f'Confidence: {confidence}')
-  return prediction
+    print(probabilities)
+    # get ids with highest predicted score (number defined by num_predictions)
+    top_probabilities, top_lang_ids = torch.topk(probabilities, k=num_predictions, dim=-1)
+    top_probabilities = top_probabilities.tolist()[0]
+    top_lang_ids = top_lang_ids.tolist()[0]
+    
+    top_predictions = []
+    for lang_id, confidence in zip(top_lang_ids, top_probabilities):
+      # map to human-readable languages
+      lang_obj = global_id_to_lang(model_id_to_global_id[lang_id])
+      prediction = {
+          "lang": lang_obj.name,
+          "confidence": confidence
+          }
+      top_predictions.append(prediction)
+
+  return top_predictions
 
 def write_lang_id_json(prediction, output_fp):
     """
@@ -110,23 +111,3 @@ def write_lang_id_json(prediction, output_fp):
     with open(f"{output_fp}.json", "w") as out_file:
         json.dump(prediction, out_file, indent=4)
     print(f"Wrote: {output_fp}")
-
-# """# Make inferences"""
-# def make_inferences(output_dir, model, model_dataset, compute_metrics):
-#   """
-#   Returns prediction output
-#   """
-#   args = TrainingArguments(
-#       output_dir=output_dir,
-#       per_device_eval_batch_size=1,
-#       logging_steps=25,
-#   )
-
-#   trainer = Trainer(
-#       args=args,
-#       model=model,
-#       eval_dataset=model_dataset,
-#       compute_metrics=compute_metrics,
-#   )
-
-#   return trainer.predict(model_dataset)
