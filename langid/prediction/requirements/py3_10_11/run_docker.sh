@@ -14,4 +14,4 @@ else
     docker_name="lang-id"
 fi
 dir_up=$(realpath "../../")
-docker run -v $dir_up:/scripts -it --rm --gpus all --name $container_name $docker_name bash
+docker run -v $dir_up:/app/ -it --rm --name $container_name $docker_name bash
