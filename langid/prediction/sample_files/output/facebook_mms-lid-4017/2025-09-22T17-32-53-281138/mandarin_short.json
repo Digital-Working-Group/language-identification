@@ -1,0 +1,42 @@
+[
+    {
+        "lang": "Mandarin Chinese",
+        "confidence": 0.9983975291252136
+    },
+    {
+        "lang": "Wu Chinese",
+        "confidence": 9.260360093321651e-05
+    },
+    {
+        "lang": "Xiang Chinese",
+        "confidence": 3.683324030134827e-05
+    },
+    {
+        "lang": "Swedish",
+        "confidence": 2.4745462724240497e-05
+    },
+    {
+        "lang": "Maltese",
+        "confidence": 2.3382686777040362e-05
+    },
+    {
+        "lang": "Northern Tujia",
+        "confidence": 2.0295225112931803e-05
+    },
+    {
+        "lang": "English",
+        "confidence": 1.4533005014527589e-05
+    },
+    {
+        "lang": "Shan",
+        "confidence": 1.4131766874925233e-05
+    },
+    {
+        "lang": "Phai",
+        "confidence": 1.2353341844573151e-05
+    },
+    {
+        "lang": "Kalmyk",
+        "confidence": 1.1031756002921611e-05
+    }
+]
