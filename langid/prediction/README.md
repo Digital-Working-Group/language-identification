@@ -81,6 +81,8 @@ See [Models](#models) for a list of suggested and compatible models.
 | output_dir | str | The desired root folder to place output files. | "output/" in the base directory of input_fp. |
 | model_id | str | The id of the desired model. | None |
 
+Note: If you wish to produce a JSON with all predicted languages and their probabilities, you may set num_predictions=None.
+
 ### Sample Input and Output Files
 
 ```

@@ -88,6 +88,10 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_pr
     outputs = model(**inputs)
     probabilities = F.softmax(outputs.logits, dim=-1)
 
+    # if num_prediction=None, return all
+    if num_predictions is None:
+      num_predictions = probabilities.size(-1)
+
     # get ids with highest predicted score (number defined by num_predictions)
     top_probabilities, top_lang_ids = torch.topk(probabilities, k=num_predictions, dim=-1)
     top_probabilities = top_probabilities.tolist()[0]
