@@ -26,11 +26,11 @@ def run_prediction(filepath, **kwargs):
     output_fname = kwargs.get('output_fname', Path(input_fp_path.name).stem)
     output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
 
-  ## Build output path
-  iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
-  output_dir = script_dir.parent / "sample_files" / "output" / model_id.replace('/', '_') / iso_now
-  output_dir.mkdir(parents=True, exist_ok=True)
-  mappings_dir = script_dir.parent / "mappings" 
+    ## Build output path
+    iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
+    output_dir = script_dir.parent / "sample_files" / "output" / model_id.replace('/', '_') / iso_now
+    output_dir.mkdir(parents=True, exist_ok=True)
+    mappings_dir = script_dir.parent / "mappings" 
 
     ## STEPS:
     # Load model 
