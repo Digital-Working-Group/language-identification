@@ -13,13 +13,14 @@ This repository runs several language identification (langid) models on differen
 
 ### Python Requirements
 ```
-|-- prediction
-|   |-- requirements  
-|       |-- py3-10-11
-|       |-- requirements.txt
-|       |-- Dockerfile
-|       |-- build_docker.sh   
-|       |-- run_docker.sh
+langid
+   |-- prediction
+   |   |-- requirements
+   |   |   |-- py3-10-11
+   |   |   |   |-- Dockerfile
+   |   |   |   |-- build_docker.sh
+   |   |   |   |-- requirements.txt
+   |   |   |   |-- run_docker.sh
 ```
 
 Check your Python version:
@@ -44,7 +45,7 @@ License information for each set of requirements.txt can be found in their respe
 Please see Docker's documentation for more information ([docker build](https://docs.docker.com/build/), [Dockerfile](https://docs.docker.com/build/concepts/dockerfile/), [docker run](https://docs.docker.com/reference/cli/docker/container/run/)).
 
 ## Usage Example
-See [scripts/main.py](src/main.py) for usage examples.
+See [scripts/main.py](scripts/main.py) for usage examples.
 
 ```python
 from langid_predict import run_prediction
@@ -86,31 +87,27 @@ Note: If you wish to produce a JSON with all predicted languages and their proba
 ### Sample Input and Output Files
 
 ```
-sample_files
-│   100yearsofsolitude_span.wav
-│   first_minute_Sample_HV_Clip.wav
-│   mandarin_short.wav
-│
-└───output
-    ├───facebook_mms-lid-4017
-    │   ├───2025-09-22T16-34-08-252927
-    │   │       first_minute_Sample_HV_Clip.json
-    │   │
-    │   ├───2025-09-22T16-34-24-066659
-    │   │       100yearsofsolitude_span.json
-    │   │
-    │   └───2025-09-22T17-32-53-281138
-    │           mandarin_short.json
-    │
-    └───sanchit-gandhi_whisper-medium-fleurs-lang-id
-        ├───2025-09-22T16-34-00-362607
-        │       first_minute_Sample_HV_Clip.json
-        │
-        ├───2025-09-22T16-34-05-823805
-        │       100yearsofsolitude_span.json
-        │
-        └───2025-09-22T17-32-48-375608
-                mandarin_short.json
+langid
+   |-- prediction
+   |   |-- sample_files
+   |   |   |-- 100yearsofsolitude_span.wav
+   |   |   |-- first_minute_Sample_HV_Clip.wav
+   |   |   |-- mandarin_short.wav
+   |   |   |-- output
+   |   |   |   |-- facebook_mms-lid-4017
+   |   |   |   |   |-- 2025-09-22T16-34-08-252927
+   |   |   |   |   |   |-- first_minute_Sample_HV_Clip.json
+   |   |   |   |   |-- 2025-09-22T16-34-24-066659
+   |   |   |   |   |   |-- 100yearsofsolitude_span.json
+   |   |   |   |   |-- 2025-09-22T17-32-53-281138
+   |   |   |   |   |   |-- mandarin_short.json
+   |   |   |   |-- sanchit-gandhi_whisper-medium-fleurs-lang-id
+   |   |   |   |   |-- 2025-09-22T16-34-00-362607
+   |   |   |   |   |   |-- first_minute_Sample_HV_Clip.json
+   |   |   |   |   |-- 2025-09-22T16-34-05-823805
+   |   |   |   |   |   |-- 100yearsofsolitude_span.json
+   |   |   |   |   |-- 2025-09-22T17-32-48-375608
+   |   |   |   |   |   |-- mandarin_short.json
 ```
 
 ## Models
