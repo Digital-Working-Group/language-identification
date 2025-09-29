@@ -2,7 +2,6 @@
 lang_predict.py
 Holds scripts for running language identification prediction
 """
-
 import datetime
 from pathlib import Path
 import json
