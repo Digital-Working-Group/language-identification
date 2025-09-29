@@ -30,9 +30,9 @@ def run_prediction(filepath, **kwargs):
     output_dir.mkdir(parents=True, exist_ok=True)
     mappings_dir = script_dir.parent / "mappings"
 
-    print("LOADING MODEL")
+    print(f"LOADING MODEL: {model_id}")
     model, feature_extractor = load_model(model_id)
-    print("LOADING DATA")
+    print(f"LOADING DATA: {filepath}")
     audio_array = load_local_data(filepath)
     print("LOADING MAPPING")
     model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
