@@ -22,7 +22,7 @@ def run_prediction(filepath, **kwargs):
     input_fp_path = Path(filepath)
 
     model_id = kwargs.get("model_id")
-    num_predictions = kwargs.get("num_predictions", 10)
+    top_n_predictions = kwargs.get("top_n_predictions", 10)
     output_fname = kwargs.get('output_fname', Path(input_fp_path.name).stem)
     output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
 
@@ -38,7 +38,7 @@ def run_prediction(filepath, **kwargs):
     print("LOADING MAPPING")
     model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
     print("PREDICTING LANGUAGE")
-    prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id, num_predictions)
+    prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_predictions)
     write_lang_id_json(prediction, output_dir /output_fname)
 
 def load_model(model_id):
@@ -70,7 +70,7 @@ def load_mappings(mappings_dir, model_id):
     global_id_to_model_id = load_mapping(model_mappings_dir / "global_id_to_model_id.json")
     return model_id_to_global_id, global_id_to_model_id
 
-def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_predictions=10):
+def predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_predictions=10):
     """
     Prediction on an audio_array of a single file using specified model
     """
@@ -79,11 +79,11 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_pr
         outputs = model(**inputs)
         probabilities = F.softmax(outputs.logits, dim=-1)
         # if num_prediction=None, return all
-        if num_predictions is None:
-            num_predictions = probabilities.size(-1)
+        if top_n_predictions is None:
+            top_n_predictions = probabilities.size(-1)
 
-        # get ids with highest predicted score (number defined by num_predictions)
-        top_probabilities, top_lang_ids = torch.topk(probabilities, k=num_predictions, dim=-1)
+        # get ids with highest predicted score (number defined by top_n_predictions)
+        top_probabilities, top_lang_ids = torch.topk(probabilities, k=top_n_predictions, dim=-1)
         top_probabilities = top_probabilities.tolist()[0]
         top_lang_ids = top_lang_ids.tolist()[0]
 

@@ -78,11 +78,11 @@ See [Models](#models) for a list of suggested and compatible models.
 | Keyword Argument | Type | Description | Default Value |
 |---|---|---|---|
 | output_fname | str | The desired base filename of the output files. | Basename of input_fp. |
-| num_predictions | int | The number of most likely language predictions and probabilities to output. | 10 |
+| top_n_predictions | int | Return the top N language predictions. If set to None, returns all language predictions. | 10 |
 | output_dir | str | The desired root folder to place output files. | "output/" in the base directory of input_fp. |
 | model_id | str | The id of the desired model. | None |
 
-Note: If you wish to produce a JSON with all predicted languages and their probabilities, you may set num_predictions=None.
+Note: If you wish to produce a JSON with all predicted languages and their probabilities, you may set top_n_predictions=None.
 
 ### Sample Input and Output Files
 
