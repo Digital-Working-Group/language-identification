@@ -31,7 +31,7 @@ See [Anaconda](https://www.anaconda.com/download/success) as an option to switch
 
 Install requirements for Python 3.10.11:
 ```sh
-pip install -r requirements/py-3-10-11/requirements.txt ## Python 3.10.11 requirements
+pip install -r requirements/py3_10_11/requirements.txt ## Python 3.10.11 requirements
 ```
 
 Note: you may use the pip install command described above even if you are working with a different Python version, but you may need to adjust the requirements.txt file to fit any dependencies specific to that Python version.
