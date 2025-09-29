@@ -26,26 +26,19 @@ def run_prediction(filepath, **kwargs):
     output_fname = kwargs.get('output_fname', Path(input_fp_path.name).stem)
     output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
 
-    ## Build output path
     iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
     output_dir = script_dir.parent / "sample_files" / "output" / model_id.replace('/', '_') / iso_now
     output_dir.mkdir(parents=True, exist_ok=True)
-    mappings_dir = script_dir.parent / "mappings" 
+    mappings_dir = script_dir.parent / "mappings"
 
-    ## STEPS:
-    # Load model 
     print("LOADING MODEL")
     model, feature_extractor = load_model(model_id)
     print("LOADING DATA")
-    # Load data
     audio_array = load_local_data(filepath)
-    ## Get model mappings
     print("LOADING MAPPING")
     model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
-    ## Run predictions
     print("PREDICTING LANGUAGE")
     prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id, num_predictions)
-    ## Write output:
     write_lang_id_json(prediction, output_dir /output_fname)
 
 def load_model(model_id):
@@ -64,7 +57,7 @@ def load_local_data(filepath):
 
 def load_mappings(mappings_dir, model_id):
     """
-    Loads the mappings for the models 
+    Loads the mappings for the models
     """
     model_mappings_dir = mappings_dir / "models" / model_id
     def load_mapping(path: Path):
@@ -96,13 +89,13 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, num_pr
 
         top_predictions = []
         for lang_id, confidence in zip(top_lang_ids, top_probabilities):
-          # map to human-readable languages
-          lang_obj = global_id_to_lang(model_id_to_global_id[lang_id])
-          prediction = {
+            # map to human-readable languages
+            lang_obj = global_id_to_lang(model_id_to_global_id[lang_id])
+            prediction = {
               "lang": lang_obj.name,
               "confidence": confidence
               }
-          top_predictions.append(prediction)
+            top_predictions.append(prediction)
     return top_predictions
 
 def write_lang_id_json(prediction, output_fp):
