@@ -45,7 +45,7 @@ License information for each set of requirements.txt can be found in their respe
 Please see Docker's documentation for more information ([docker build](https://docs.docker.com/build/), [Dockerfile](https://docs.docker.com/build/concepts/dockerfile/), [docker run](https://docs.docker.com/reference/cli/docker/container/run/)).
 
 ## Usage Example
-See [scripts/main.py](src/main.py) for usage examples.
+See [scripts/main.py](scripts/main.py) for usage examples.
 
 ```python
 from langid_predict import run_prediction
