@@ -13,6 +13,7 @@ import torch
 import torch.nn.functional as F
 from mapping_scripts.global_id_utils import global_id_to_lang
 
+script_dir = Path(__file__).resolve().parent
 
 def run_prediction(filepath, **kwargs):
   """
@@ -27,9 +28,9 @@ def run_prediction(filepath, **kwargs):
 
   ## Build output path
   iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
-  output_dir = Path("/app/sample_files/output") / model_id.replace('/', '_') / iso_now
+  output_dir = script_dir.parent / "sample_files" / "output" / model_id.replace('/', '_') / iso_now
   output_dir.mkdir(parents=True, exist_ok=True)
-  mappings_dir = Path("/app/mappings")
+  mappings_dir = script_dir.parent / "mappings" 
 
   ## STEPS:
   # Load model 

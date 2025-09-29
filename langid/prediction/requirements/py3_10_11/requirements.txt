@@ -2,7 +2,9 @@ accelerate==0.31.0
 datasets==2.20.0
 evaluate==0.4.2
 librosa==0.10.2.post1
+llvmlite==0.42.0
 matplotlib==3.7.1
+numba==0.59.1
 numpy==1.25.2
 openpyxl==3.1.4
 pandas==2.0.3
