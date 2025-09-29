@@ -1,6 +1,6 @@
 # Language Identification: Prediction
 
-This repository runs several language identification (langid) models on different audio files.
+This repository runs language identification (langid) models on different audio files.
 
 | Table of Contents |
 |---|
