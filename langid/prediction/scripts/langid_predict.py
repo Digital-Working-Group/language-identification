@@ -89,11 +89,13 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_
         top_predictions = []
         for lang_id, confidence in zip(top_lang_ids, top_probabilities):
             # map to human-readable languages
-            lang_obj = global_id_to_lang(model_id_to_global_id[lang_id])
+            global_id = model_id_to_global_id[lang_id]
+            lang_obj = global_id_to_lang(global_id)
             prediction = {
               "lang": lang_obj.name,
               "confidence": confidence,
-              "lang_id": lang_id
+              "model_lang_id": lang_id,
+              "global_id": global_id
               }
             top_predictions.append(prediction)
     return top_predictions

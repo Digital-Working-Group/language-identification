@@ -2,51 +2,61 @@
     {
         "lang": "Mandarin Chinese",
         "confidence": 0.9999401569366455,
-        "lang_id": 13
+        "model_lang_id": 13,
+        "global_id": 1677
     },
     {
         "lang": "Yue Chinese",
         "confidence": 7.320571512536844e-06,
-        "lang_id": 100
+        "model_lang_id": 100,
+        "global_id": 16748
     },
     {
         "lang": "Spanish",
         "confidence": 3.957936769438675e-06,
-        "lang_id": 20
+        "model_lang_id": 20,
+        "global_id": 12558
     },
     {
         "lang": "Irish",
         "confidence": 2.7796700123872142e-06,
-        "lang_id": 27
+        "model_lang_id": 27,
+        "global_id": 4346
     },
     {
         "lang": "Japanese",
         "confidence": 2.3700458768871613e-06,
-        "lang_id": 40
+        "model_lang_id": 40,
+        "global_id": 6487
     },
     {
         "lang": "French",
         "confidence": 2.117935082424083e-06,
-        "lang_id": 26
+        "model_lang_id": 26,
+        "global_id": 3822
     },
     {
         "lang": "Oromo",
         "confidence": 2.045087967417203e-06,
-        "lang_id": 71
+        "model_lang_id": 71,
+        "global_id": 9918
     },
     {
         "lang": "Mongolian",
         "confidence": 1.5096755987542565e-06,
-        "lang_id": 60
+        "model_lang_id": 60,
+        "global_id": 8489
     },
     {
         "lang": "Bengali",
         "confidence": 1.3844053228240227e-06,
-        "lang_id": 8
+        "model_lang_id": 8,
+        "global_id": 793
     },
     {
         "lang": "Welsh",
         "confidence": 1.3446285720419837e-06,
-        "lang_id": 15
+        "model_lang_id": 15,
+        "global_id": 1988
     }
 ]

@@ -2,51 +2,61 @@
     {
         "lang": "Mandarin Chinese",
         "confidence": 0.9983975291252136,
-        "lang_id": 1
+        "model_lang_id": 1,
+        "global_id": 1677
     },
     {
         "lang": "Wu Chinese",
         "confidence": 9.260360093321651e-05,
-        "lang_id": 2006
+        "model_lang_id": 2006,
+        "global_id": 15412
     },
     {
         "lang": "Xiang Chinese",
         "confidence": 3.683324030134827e-05,
-        "lang_id": 2015
+        "model_lang_id": 2015,
+        "global_id": 5213
     },
     {
         "lang": "Swedish",
         "confidence": 2.4745462724240497e-05,
-        "lang_id": 6
+        "model_lang_id": 6,
+        "global_id": 12744
     },
     {
         "lang": "Maltese",
         "confidence": 2.3382686777040362e-05,
-        "lang_id": 96
+        "model_lang_id": 96,
+        "global_id": 8417
     },
     {
         "lang": "Northern Tujia",
         "confidence": 2.0295225112931803e-05,
-        "lang_id": 2688
+        "model_lang_id": 2688,
+        "global_id": 13086
     },
     {
         "lang": "English",
         "confidence": 1.4533005014527589e-05,
-        "lang_id": 2
+        "model_lang_id": 2,
+        "global_id": 3048
     },
     {
         "lang": "Shan",
         "confidence": 1.4131766874925233e-05,
-        "lang_id": 616
+        "model_lang_id": 616,
+        "global_id": 12363
     },
     {
         "lang": "Phai",
         "confidence": 1.2353341844573151e-05,
-        "lang_id": 518
+        "model_lang_id": 518,
+        "global_id": 10601
     },
     {
         "lang": "Kalmyk",
         "confidence": 1.1031756002921611e-05,
-        "lang_id": 247
+        "model_lang_id": 247,
+        "global_id": 15559
     }
 ]

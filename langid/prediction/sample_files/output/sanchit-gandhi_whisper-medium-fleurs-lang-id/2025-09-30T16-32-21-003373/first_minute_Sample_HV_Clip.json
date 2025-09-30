@@ -2,51 +2,61 @@
     {
         "lang": "English",
         "confidence": 0.9990027546882629,
-        "lang_id": 19
+        "model_lang_id": 19,
+        "global_id": 3048
     },
     {
         "lang": "Spanish",
         "confidence": 8.639177394798025e-05,
-        "lang_id": 20
+        "model_lang_id": 20,
+        "global_id": 12558
     },
     {
         "lang": "Norwegian Bokm\u00e5l",
         "confidence": 7.099896902218461e-05,
-        "lang_id": 65
+        "model_lang_id": 65,
+        "global_id": 9153
     },
     {
         "lang": "Maori",
         "confidence": 5.24006609339267e-05,
-        "lang_id": 57
+        "model_lang_id": 57,
+        "global_id": 8562
     },
     {
         "lang": "Irish",
         "confidence": 3.2324049243470654e-05,
-        "lang_id": 27
+        "model_lang_id": 27,
+        "global_id": 4346
     },
     {
         "lang": "Kazakh",
         "confidence": 2.994619353557937e-05,
-        "lang_id": 45
+        "model_lang_id": 45,
+        "global_id": 6785
     },
     {
         "lang": "Igbo",
         "confidence": 2.8537029720610008e-05,
-        "lang_id": 37
+        "model_lang_id": 37,
+        "global_id": 5448
     },
     {
         "lang": "Icelandic",
         "confidence": 2.581806438683998e-05,
-        "lang_id": 38
+        "model_lang_id": 38,
+        "global_id": 5887
     },
     {
         "lang": "Oromo",
         "confidence": 2.5314689992228523e-05,
-        "lang_id": 71
+        "model_lang_id": 71,
+        "global_id": 9918
     },
     {
         "lang": "Kamba (Kenya)",
         "confidence": 2.3996261006686836e-05,
-        "lang_id": 43
+        "model_lang_id": 43,
+        "global_id": 6772
     }
 ]

@@ -2,51 +2,61 @@
     {
         "lang": "Asturian",
         "confidence": 0.9977782368659973,
-        "lang_id": 4
+        "model_lang_id": 4,
+        "global_id": 487
     },
     {
         "lang": "Occitan (post 1500)",
         "confidence": 0.0006047742790542543,
-        "lang_id": 70
+        "model_lang_id": 70,
+        "global_id": 9524
     },
     {
         "lang": "French",
         "confidence": 0.0004814544809050858,
-        "lang_id": 26
+        "model_lang_id": 26,
+        "global_id": 3822
     },
     {
         "lang": "Catalan",
         "confidence": 0.00018949079094454646,
-        "lang_id": 10
+        "model_lang_id": 10,
+        "global_id": 1371
     },
     {
         "lang": "Maori",
         "confidence": 9.704074909677729e-05,
-        "lang_id": 57
+        "model_lang_id": 57,
+        "global_id": 8562
     },
     {
         "lang": "Galician",
         "confidence": 8.7807908130344e-05,
-        "lang_id": 28
+        "model_lang_id": 28,
+        "global_id": 4348
     },
     {
         "lang": "Japanese",
         "confidence": 7.056196045596153e-05,
-        "lang_id": 40
+        "model_lang_id": 40,
+        "global_id": 6487
     },
     {
         "lang": "Amharic",
         "confidence": 4.231955608702265e-05,
-        "lang_id": 1
+        "model_lang_id": 1,
+        "global_id": 319
     },
     {
         "lang": "Dutch",
         "confidence": 4.026911483379081e-05,
-        "lang_id": 67
+        "model_lang_id": 67,
+        "global_id": 9077
     },
     {
         "lang": "Yoruba",
         "confidence": 3.582377757993527e-05,
-        "lang_id": 99
+        "model_lang_id": 99,
+        "global_id": 16605
     }
 ]
