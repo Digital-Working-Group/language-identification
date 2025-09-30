@@ -19,6 +19,8 @@ langid
    |   |   |-- py3-10-11
    |   |   |   |-- Dockerfile
    |   |   |   |-- build_docker.sh
+   |   |   |   |-- docker_pip-licenses.md
+   |   |   |   |-- pip-licenses.md
    |   |   |   |-- requirements.txt
    |   |   |   |-- run_docker.sh
 ```
