@@ -97,19 +97,18 @@ langid
    |   |   |-- mandarin_short.wav
    |   |   |-- output
    |   |   |   |-- facebook_mms-lid-4017
-   |   |   |   |   |-- 2025-09-22T16-34-08-252927
+   |   |   |   |   |-- 2025-09-30T16-32-32-569644
    |   |   |   |   |   |-- first_minute_Sample_HV_Clip.json
-   |   |   |   |   |-- 2025-09-22T16-34-24-066659
+   |   |   |   |   |-- 2025-09-30T16-32-49-504450
    |   |   |   |   |   |-- 100yearsofsolitude_span.json
-   |   |   |   |   |-- 2025-09-22T17-32-53-281138
+   |   |   |   |   |-- 2025-09-30T16-32-58-757270
    |   |   |   |   |   |-- mandarin_short.json
    |   |   |   |-- sanchit-gandhi_whisper-medium-fleurs-lang-id
-   |   |   |   |   |-- 2025-09-22T16-34-00-362607
+   |   |   |   |   |-- 2025-09-30T16-32-21-003373
    |   |   |   |   |   |-- first_minute_Sample_HV_Clip.json
-   |   |   |   |   |-- 2025-09-22T16-34-05-823805
+   |   |   |   |   |-- 2025-09-30T16-32-26-742124
    |   |   |   |   |   |-- 100yearsofsolitude_span.json
-   |   |   |   |   |-- 2025-09-22T17-32-48-375608
-   |   |   |   |   |   |-- mandarin_short.json
+   |   |   |   |   |-- 2025-09-30T16-32-29-735893
 ```
 
 ## Models
