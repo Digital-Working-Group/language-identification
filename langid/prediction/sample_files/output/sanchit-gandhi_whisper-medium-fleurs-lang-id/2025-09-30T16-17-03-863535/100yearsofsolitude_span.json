@@ -1,0 +1,52 @@
+[
+    {
+        "lang": "Asturian",
+        "confidence": 0.9977782368659973,
+        "lang_id": 4
+    },
+    {
+        "lang": "Occitan (post 1500)",
+        "confidence": 0.0006047742790542543,
+        "lang_id": 70
+    },
+    {
+        "lang": "French",
+        "confidence": 0.0004814544809050858,
+        "lang_id": 26
+    },
+    {
+        "lang": "Catalan",
+        "confidence": 0.00018949079094454646,
+        "lang_id": 10
+    },
+    {
+        "lang": "Maori",
+        "confidence": 9.704074909677729e-05,
+        "lang_id": 57
+    },
+    {
+        "lang": "Galician",
+        "confidence": 8.7807908130344e-05,
+        "lang_id": 28
+    },
+    {
+        "lang": "Japanese",
+        "confidence": 7.056196045596153e-05,
+        "lang_id": 40
+    },
+    {
+        "lang": "Amharic",
+        "confidence": 4.231955608702265e-05,
+        "lang_id": 1
+    },
+    {
+        "lang": "Dutch",
+        "confidence": 4.026911483379081e-05,
+        "lang_id": 67
+    },
+    {
+        "lang": "Yoruba",
+        "confidence": 3.582377757993527e-05,
+        "lang_id": 99
+    }
+]

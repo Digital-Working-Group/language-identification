@@ -1,0 +1,52 @@
+[
+    {
+        "lang": "English",
+        "confidence": 0.9990027546882629,
+        "lang_id": 19
+    },
+    {
+        "lang": "Spanish",
+        "confidence": 8.639177394798025e-05,
+        "lang_id": 20
+    },
+    {
+        "lang": "Norwegian Bokm\u00e5l",
+        "confidence": 7.099896902218461e-05,
+        "lang_id": 65
+    },
+    {
+        "lang": "Maori",
+        "confidence": 5.24006609339267e-05,
+        "lang_id": 57
+    },
+    {
+        "lang": "Irish",
+        "confidence": 3.2324049243470654e-05,
+        "lang_id": 27
+    },
+    {
+        "lang": "Kazakh",
+        "confidence": 2.994619353557937e-05,
+        "lang_id": 45
+    },
+    {
+        "lang": "Igbo",
+        "confidence": 2.8537029720610008e-05,
+        "lang_id": 37
+    },
+    {
+        "lang": "Icelandic",
+        "confidence": 2.581806438683998e-05,
+        "lang_id": 38
+    },
+    {
+        "lang": "Oromo",
+        "confidence": 2.5314689992228523e-05,
+        "lang_id": 71
+    },
+    {
+        "lang": "Kamba (Kenya)",
+        "confidence": 2.3996261006686836e-05,
+        "lang_id": 43
+    }
+]
