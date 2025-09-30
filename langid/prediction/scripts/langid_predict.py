@@ -92,7 +92,8 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_
             lang_obj = global_id_to_lang(model_id_to_global_id[lang_id])
             prediction = {
               "lang": lang_obj.name,
-              "confidence": confidence
+              "confidence": confidence,
+              "lang_id": lang_id
               }
             top_predictions.append(prediction)
     return top_predictions
