@@ -47,7 +47,7 @@ License information for each set of requirements.txt can be found in their respe
 Please see Docker's documentation for more information ([docker build](https://docs.docker.com/build/), [Dockerfile](https://docs.docker.com/build/concepts/dockerfile/), [docker run](https://docs.docker.com/reference/cli/docker/container/run/)).
 
 ## Usage Example
-See [scripts/main.py](scripts/main.py) for usage examples.
+See [main.py](main.py) for usage examples.
 
 ```python
 from langid_predict import run_prediction
@@ -57,14 +57,14 @@ def main():
     Runs lang id example
     """
     kwargs_whisper = {'model_id': 'sanchit-gandhi/whisper-medium-fleurs-lang-id'}
-    run_prediction('../sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_whisper)
-    run_prediction('../sample_files/100yearsofsolitude_span.wav', **kwargs_whisper)
-    run_prediction('../sample_files/mandarin_short.wav', **kwargs_whisper)
+    run_prediction('sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_whisper)
+    run_prediction('sample_files/100yearsofsolitude_span.wav', **kwargs_whisper)
+    run_prediction('sample_files/mandarin_short.wav', **kwargs_whisper)
 
     kwargs_fb = {'model_id': 'facebook/mms-lid-4017'}
-    run_prediction('../sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_fb)
-    run_prediction('../sample_files/100yearsofsolitude_span.wav', **kwargs_fb)
-    run_prediction('../sample_files/mandarin_short.wav', **kwargs_fb)
+    run_prediction('sample_files/first_minute_Sample_HV_Clip.wav', **kwargs_fb)
+    run_prediction('sample_files/100yearsofsolitude_span.wav', **kwargs_fb)
+    run_prediction('sample_files/mandarin_short.wav', **kwargs_fb)
 
 if __name__ == '__main__':
     main()
@@ -111,6 +111,56 @@ langid
    |   |   |   |   |-- 2025-09-30T16-32-29-735893
 ```
 
+## Output Examples
+| Key | Description | Example |
+| - | - | - |
+| lang | The ISO639 predicted language. If 'is_iso639' is 0, then lang is a string abbreviation of a language that isn't currently in the ISO639 database. | "English" (is_iso639=1), "prp" (is_iso639=0) |
+| confidence | The probability/confidence score from the language identification model. | 0.999 |
+| model_lang_id | The model's internal ID integer that represents the predicted language. | 2 |
+| global_id | A global integer ID that maps to a language. | 3048 |
+| is_iso639 | If 0, then "lang" is a string abbreviation of a language that isn't currently in the ISO639 database. If 1, then "lang" is the ISO639 langauge name. | 1 |
+
+```yaml
+[
+    {
+        "lang": "English",
+        "confidence": 0.9994128942489624,
+        "model_lang_id": 2,
+        "global_id": 3048,
+        "is_iso639": 1
+    },
+    {
+        "lang": "Welsh",
+        "confidence": 1.6988031347864307e-05,
+        "model_lang_id": 51,
+        "global_id": 1988,
+        "is_iso639": 1
+    },
+    {
+        "lang": "Slovenian",
+        "confidence": 1.3651256267621648e-05,
+        "model_lang_id": 29,
+        "global_id": 12475,
+        "is_iso639": 1
+    },
+    {
+        "lang": "Tatar",
+        "confidence": 1.1638738214969635e-05,
+        "model_lang_id": 27,
+        "global_id": 12863,
+        "is_iso639": 1
+    },
+    {
+        "lang": "Mandarin Chinese",
+        "confidence": 8.861955393513199e-06,
+        "model_lang_id": 1,
+        "global_id": 1677,
+        "is_iso639": 1
+    },
+    ...
+]
+
+```
 ## Models
 See HuggingFace for more information about each model.
 

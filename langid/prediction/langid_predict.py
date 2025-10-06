@@ -13,8 +13,6 @@ import torch.nn.functional as F
 import iso639
 from mapping_scripts.global_id_utils import global_id_to_iso639_part3
 
-script_dir = Path(__file__).resolve().parent
-
 def run_prediction(filepath, **kwargs):
     """
     Run LI on a given file
@@ -27,16 +25,15 @@ def run_prediction(filepath, **kwargs):
     output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
 
     iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
-    output_dir = script_dir.parent / "sample_files" / "output" / model_id.replace('/', '_') / iso_now
+    output_dir = output_dir / model_id.replace('/', '_') / iso_now
     output_dir.mkdir(parents=True, exist_ok=True)
-    mappings_dir = script_dir.parent / "mappings"
 
     print(f"LOADING MODEL: {model_id}")
     model, feature_extractor = load_model(model_id)
     print(f"LOADING DATA: {filepath}")
     audio_array = load_local_data(filepath)
     print("LOADING MAPPING")
-    model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
+    model_id_to_global_id, _ = load_mappings(Path("mappings"), model_id)
     print("PREDICTING LANGUAGE")
     prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id,
         top_n_predictions)
