@@ -3,60 +3,70 @@
         "lang": "English",
         "confidence": 0.9994128942489624,
         "model_lang_id": 2,
-        "global_id": 3048
+        "global_id": 3048,
+        "is_iso639": 1
     },
     {
         "lang": "Welsh",
         "confidence": 1.6988031347864307e-05,
         "model_lang_id": 51,
-        "global_id": 1988
+        "global_id": 1988,
+        "is_iso639": 1
     },
     {
         "lang": "Slovenian",
         "confidence": 1.3651256267621648e-05,
         "model_lang_id": 29,
-        "global_id": 12475
+        "global_id": 12475,
+        "is_iso639": 1
     },
     {
         "lang": "Tatar",
         "confidence": 1.1638738214969635e-05,
         "model_lang_id": 27,
-        "global_id": 12863
+        "global_id": 12863,
+        "is_iso639": 1
     },
     {
         "lang": "Mandarin Chinese",
         "confidence": 8.861955393513199e-06,
         "model_lang_id": 1,
-        "global_id": 1677
+        "global_id": 1677,
+        "is_iso639": 1
     },
     {
         "lang": "Albanian",
         "confidence": 8.218637049139943e-06,
         "model_lang_id": 70,
-        "global_id": 12592
+        "global_id": 12592,
+        "is_iso639": 1
     },
     {
         "lang": "Scots",
         "confidence": 6.185562142491108e-06,
         "model_lang_id": 1412,
-        "global_id": 12234
+        "global_id": 12234,
+        "is_iso639": 1
     },
     {
         "lang": "Portuguese",
         "confidence": 5.998941560392268e-06,
         "model_lang_id": 8,
-        "global_id": 10521
+        "global_id": 10521,
+        "is_iso639": 1
     },
     {
         "lang": "Kazakh",
         "confidence": 5.5241971494979225e-06,
         "model_lang_id": 66,
-        "global_id": 6785
+        "global_id": 6785,
+        "is_iso639": 1
     },
     {
         "lang": "Yocobou\u00e9 Dida",
         "confidence": 4.745277237816481e-06,
         "model_lang_id": 286,
-        "global_id": 4579
+        "global_id": 4579,
+        "is_iso639": 1
     }
 ]

@@ -13,6 +13,18 @@ import torch.nn.functional as F
 import iso639
 from mapping_scripts.global_id_utils import global_id_to_iso639_part3
 
+def create_output_dir(output_dir, model_id):
+    """
+    make output_dir a Path object, if it isn't already
+    add the model_id and ISO timestamp as subfolders to the output_dir root
+    """
+    if isinstance(output_dir, str):
+        output_dir = Path(output_dir)
+    iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
+    output_dir = output_dir / model_id.replace('/', '_') / iso_now
+    output_dir.mkdir(parents=True, exist_ok=True)
+    return output_dir
+
 def run_prediction(filepath, **kwargs):
     """
     Run LI on a given file
@@ -22,11 +34,8 @@ def run_prediction(filepath, **kwargs):
     model_id = kwargs.get("model_id")
     top_n_predictions = kwargs.get("top_n_predictions", 10)
     output_fname = kwargs.get('output_fname', Path(input_fp_path.name).stem)
-    output_dir = kwargs.get('output_dir', input_fp_path.parent / "output")
-
-    iso_now = datetime.datetime.now().isoformat().replace(':', '-').replace('.', '-')
-    output_dir = output_dir / model_id.replace('/', '_') / iso_now
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = create_output_dir(kwargs.get('output_dir',
+        input_fp_path.parent / "output"), model_id)
 
     print(f"LOADING MODEL: {model_id}")
     model, feature_extractor = load_model(model_id)

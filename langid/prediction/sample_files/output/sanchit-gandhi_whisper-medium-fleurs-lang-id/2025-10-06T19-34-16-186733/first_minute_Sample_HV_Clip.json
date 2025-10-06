@@ -3,60 +3,70 @@
         "lang": "English",
         "confidence": 0.9990027546882629,
         "model_lang_id": 19,
-        "global_id": 3048
+        "global_id": 3048,
+        "is_iso639": 1
     },
     {
         "lang": "Spanish",
         "confidence": 8.639177394798025e-05,
         "model_lang_id": 20,
-        "global_id": 12558
+        "global_id": 12558,
+        "is_iso639": 1
     },
     {
         "lang": "Norwegian Bokm\u00e5l",
         "confidence": 7.099896902218461e-05,
         "model_lang_id": 65,
-        "global_id": 9153
+        "global_id": 9153,
+        "is_iso639": 1
     },
     {
         "lang": "Maori",
         "confidence": 5.24006609339267e-05,
         "model_lang_id": 57,
-        "global_id": 8562
+        "global_id": 8562,
+        "is_iso639": 1
     },
     {
         "lang": "Irish",
         "confidence": 3.2324049243470654e-05,
         "model_lang_id": 27,
-        "global_id": 4346
+        "global_id": 4346,
+        "is_iso639": 1
     },
     {
         "lang": "Kazakh",
         "confidence": 2.994619353557937e-05,
         "model_lang_id": 45,
-        "global_id": 6785
+        "global_id": 6785,
+        "is_iso639": 1
     },
     {
         "lang": "Igbo",
         "confidence": 2.8537029720610008e-05,
         "model_lang_id": 37,
-        "global_id": 5448
+        "global_id": 5448,
+        "is_iso639": 1
     },
     {
         "lang": "Icelandic",
         "confidence": 2.581806438683998e-05,
         "model_lang_id": 38,
-        "global_id": 5887
+        "global_id": 5887,
+        "is_iso639": 1
     },
     {
         "lang": "Oromo",
         "confidence": 2.5314689992228523e-05,
         "model_lang_id": 71,
-        "global_id": 9918
+        "global_id": 9918,
+        "is_iso639": 1
     },
     {
         "lang": "Kamba (Kenya)",
         "confidence": 2.3996261006686836e-05,
         "model_lang_id": 43,
-        "global_id": 6772
+        "global_id": 6772,
+        "is_iso639": 1
     }
 ]

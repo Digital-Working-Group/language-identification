@@ -3,60 +3,70 @@
         "lang": "Spanish",
         "confidence": 0.8958168625831604,
         "model_lang_id": 3,
-        "global_id": 12558
+        "global_id": 12558,
+        "is_iso639": 1
     },
     {
         "lang": "Occitan (post 1500)",
         "confidence": 0.0780135840177536,
         "model_lang_id": 630,
-        "global_id": 9524
+        "global_id": 9524,
+        "is_iso639": 1
     },
     {
         "lang": "French",
         "confidence": 0.0015053701354190707,
         "model_lang_id": 4,
-        "global_id": 3822
+        "global_id": 3822,
+        "is_iso639": 1
     },
     {
         "lang": "Galician",
         "confidence": 0.0011001776438206434,
         "model_lang_id": 89,
-        "global_id": 4348
+        "global_id": 4348,
+        "is_iso639": 1
     },
     {
         "lang": "Guarani",
         "confidence": 0.0008392850286327302,
         "model_lang_id": 65,
-        "global_id": 4511
+        "global_id": 4511,
+        "is_iso639": 1
     },
     {
         "lang": "Asturian",
         "confidence": 0.0006084989872761071,
         "model_lang_id": 1285,
-        "global_id": 487
+        "global_id": 487,
+        "is_iso639": 1
     },
     {
         "lang": "Catalan",
         "confidence": 0.0005703054484911263,
         "model_lang_id": 38,
-        "global_id": 1371
+        "global_id": 1371,
+        "is_iso639": 1
     },
     {
         "lang": "Esperanto",
         "confidence": 0.0004831361584365368,
         "model_lang_id": 1157,
-        "global_id": 3108
+        "global_id": 3108,
+        "is_iso639": 1
     },
     {
         "lang": "Latin",
         "confidence": 0.00045569383655674756,
         "model_lang_id": 64,
-        "global_id": 7455
+        "global_id": 7455,
+        "is_iso639": 1
     },
     {
         "lang": "Papiamento",
         "confidence": 0.00043414384708739817,
         "model_lang_id": 275,
-        "global_id": 10155
+        "global_id": 10155,
+        "is_iso639": 1
     }
 ]
