@@ -10,7 +10,8 @@ from datasets import Audio
 from transformers import AutoModelForAudioClassification, AutoFeatureExtractor
 import torch
 import torch.nn.functional as F
-from mapping_scripts.global_id_utils import global_id_to_lang
+import iso639
+from mapping_scripts.global_id_utils import global_id_to_iso639_part3
 
 script_dir = Path(__file__).resolve().parent
 
@@ -37,7 +38,8 @@ def run_prediction(filepath, **kwargs):
     print("LOADING MAPPING")
     model_id_to_global_id, _ = load_mappings(mappings_dir, model_id)
     print("PREDICTING LANGUAGE")
-    prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_predictions)
+    prediction = predict(model, audio_array, feature_extractor, model_id_to_global_id,
+        top_n_predictions)
     write_lang_id_json(prediction, output_dir /output_fname)
 
 def load_model(model_id):
@@ -69,6 +71,33 @@ def load_mappings(mappings_dir, model_id):
     global_id_to_model_id = load_mapping(model_mappings_dir / "global_id_to_model_id.json")
     return model_id_to_global_id, global_id_to_model_id
 
+def get_top_predictions(top_lang_ids, top_probabilities, model_id_to_global_id):
+    """
+    get top predictions
+    """
+    top_predictions = []
+    for lang_id, confidence in zip(top_lang_ids, top_probabilities):
+        # map to human-readable languages
+        global_id = model_id_to_global_id[lang_id]
+        is_iso639 = 1
+        lang_part3 = global_id_to_iso639_part3(global_id)
+        try:
+            lang_obj = iso639.Language.from_part3(lang_part3)
+        except iso639.language.LanguageNotFoundError:
+            lang_name = lang_part3
+            is_iso639 = 0
+        else:
+            lang_name = lang_obj.name
+        prediction = {
+          "lang": lang_name,
+          "confidence": confidence,
+          "model_lang_id": lang_id,
+          "global_id": global_id,
+          'is_iso639': is_iso639
+          }
+        top_predictions.append(prediction)
+    return top_predictions
+
 def predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_predictions=10):
     """
     Prediction on an audio_array of a single file using specified model
@@ -85,20 +114,8 @@ def predict(model, audio_array, feature_extractor, model_id_to_global_id, top_n_
         top_probabilities, top_lang_ids = torch.topk(probabilities, k=top_n_predictions, dim=-1)
         top_probabilities = top_probabilities.tolist()[0]
         top_lang_ids = top_lang_ids.tolist()[0]
-
-        top_predictions = []
-        for lang_id, confidence in zip(top_lang_ids, top_probabilities):
-            # map to human-readable languages
-            global_id = model_id_to_global_id[lang_id]
-            lang_obj = global_id_to_lang(global_id)
-            prediction = {
-              "lang": lang_obj.name,
-              "confidence": confidence,
-              "model_lang_id": lang_id,
-              "global_id": global_id
-              }
-            top_predictions.append(prediction)
-    return top_predictions
+        return get_top_predictions(top_lang_ids, top_probabilities, model_id_to_global_id)
+    return None
 
 def write_lang_id_json(prediction, output_fp):
     """
